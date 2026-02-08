@@ -11,11 +11,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Inject Real Name
-        # This replaces the placeholder with your GitHub Secret
+      - name: Debug: List all files
         run: |
-          sed -i "s/%%CANDIDATE_NAME%%/${{ secrets.REAL_NAME }}/g" index.html
+          echo "Current working directory: $(pwd)"
+          find . -maxdepth 2 -not -path '*/.*'
 
+      - name: Inject Real Name
+        # This find command locates any .html file and runs sed on it
+        run: |
+          find . -name "*.html" -exec sed -i "s/%%CANDIDATE_NAME%%/${{ secrets.REAL_NAME }}/g" {} +
+        
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
