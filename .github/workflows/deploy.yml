@@ -11,14 +11,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Debug: List all files
+      - name: System Audit (Where is the file?)
         run: |
-          echo "Current working directory: $(pwd)"
-          find . -maxdepth 2 -not -path '*/.*'
+          echo "### CURRENT DIRECTORY ###"
+          pwd
+          echo "### FILE LIST (Recursive) ###"
+          ls -R
+          echo "### SEARCHING FOR HTML FILES ###"
+          find . -name "*.html"
 
       - name: Inject Real Name
-        # This find command locates any .html file and runs sed on it
         run: |
+          # This finds ANY html file and injects the name, regardless of path
           find . -name "*.html" -exec sed -i "s/%%CANDIDATE_NAME%%/${{ secrets.REAL_NAME }}/g" {} +
         
       - name: Deploy to GitHub Pages
