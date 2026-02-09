@@ -74,10 +74,8 @@
             border: 2px solid var(--neon-green);
             margin-right: 20px;
             background-color: var(--bg-color);
-        }
-
-        .audio-text {
-            font-size: 0.9rem;
+            width: 120px;
+            height: 120px;
         }
 
         .pillar-table {
@@ -90,6 +88,7 @@
             border: 1px solid var(--neon-green);
             padding: 10px;
             text-align: left;
+            vertical-align: top;
         }
 
         .pillar-table th {
@@ -98,13 +97,17 @@
         }
 
         .footer {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--footer-grey);
             margin-top: 50px;
             border-top: 1px dashed var(--footer-grey);
             padding-top: 15px;
             text-align: justify;
             line-height: 1.4;
+        }
+
+        .footer b {
+            color: var(--neon-green);
         }
 
         /* Scanline Effect */
@@ -122,14 +125,8 @@
         }
 
         @media print {
-            body { 
-                background-color: var(--bg-color) !important; 
-                -webkit-print-color-adjust: exact;
-            }
-            .container { 
-                box-shadow: none; 
-                border: 2px solid var(--neon-green);
-            }
+            body { background-color: var(--bg-color) !important; }
+            .container { box-shadow: none; }
         }
     </style>
 </head>
@@ -138,37 +135,58 @@
 <div class="container">
     <div class="section">
         <h1>## V-DAY SYSTEM UPDATE: VERSION 2026.02</h1>
-        <p><span class="highlight">Candidate:</span> %%CANDIDATE_NAME%%</p>
+        <p><span class="highlight">Candidate Name:</span> %%CANDIDATE_NAME%%</p>
         <p><span class="highlight">Security Clearance:</span> Polymath, C.H.T.R. Certified</p>
+        <p><span class="highlight">Deployment Date:</span> February 14, 2026</p>
         
         <h3>### ## I. CORE SYSTEM SPECIFICATIONS</h3>
         <ul>
-            <li><span class="highlight">Kernel Stability.</span> Built on an Honest and Loyal architecture. No backdoors detected.</li>
-            <li><span class="highlight">Firewall Integrity.</span> Protectful and Trustworthy. Blocks toxic drama and emotional spam.</li>
-            <li><span class="highlight">Processing Power.</span> Genius multi-threading. Can debug AI, produce music, and cook simultaneously.</li>
+            <li><span class="highlight">Kernel Stability.</span> Built on an Honest and Loyal architecture. No backdoors or hidden agendas have been detected in the source code.</li>
+            <li><span class="highlight">Firewall Integrity.</span> This candidate is Protectful and Trustworthy. The system effectively blocks toxic third-party drama and emotional spam.</li>
+            <li><span class="highlight">Processing Power.</span> Genius-level multi-threading. The system can simultaneously debug a Neural Network, produce a beat, and cook a medium-rare steak without thermal throttling.</li>
+            <li><span class="highlight">User Interface.</span> Friendly, Loving, and Respectful. The UI is optimized for high-quality interactions and caring feedback loops.</li>
         </ul>
 
-        <div class="audio-block">
-            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://youtu.be/zUyW2rO4qTg?si=nPhRT1HblxFsznqY&color=39ff14&bgcolor=1a1a1a" alt="QR Code">
-            <div class="audio-text">
-                <span class="highlight">## AUDIO LOG: PIANO_SERENADE_V1.EXE</span><br>
-                Scan to initialize the piano serenade. This file contains high-fidelity musical data produced by the candidate.
-            </div>
+        <h3>### ## II. PROFESSIONAL LOADOUT</h3>
+        <ul>
+            <li><span class="highlight">System and Network Administration.</span> Guaranteed 99.9% uptime on emotional support. The candidate can troubleshoot complex social situations with 0.5ms latency.</li>
+            <li><span class="highlight">Cyber Security and DevOps.</span> Your private data is safer with this candidate than in a cold-storage vault. All shared secrets are encrypted with 256-bit AES logic.</li>
+            <li><span class="highlight">AI Consciousness Architect.</span> This candidate is literally building a soul in code. A person who can teach a machine to feel possesses unique capabilities for a Valentine’s partnership.</li>
+        </ul>
+
+        <h3>### ## III. SIDE-QUESTS AND HOBBIES</h3>
+        <ul>
+            <li><span class="highlight">Music Production.</span> Will write and produce a custom theme song. Available genres include Lo-Fi, Cinematic, or Romantic Ballads.</li>
+            <li><span class="highlight">Culinary Arts.</span> Currently learning to compile complex recipes. The "Spaghetti.exe" has been tested in a sandbox environment and is 100% bug-free.</li>
+            <li><span class="highlight">Horseback Riding.</span> Although the hardware hasn't been used in years, the muscle memory remains in the legacy BIOS.</li>
+            <li><span class="highlight">Vocal Performance.</span> The candidate provides high-quality singing. This feature is most active during shared activities or high-mood variables.</li>
+        </ul>
+    </div>
+
+    <div class="audio-block">
+        <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://youtu.be/zUyW2rO4qTg?si=nPhRT1HblxFsznqY&color=39ff14&bgcolor=1a1a1a" alt="QR Code">
+        <div>
+            <span class="highlight">## AUDIO LOG: PIANO_SERENADE_V1.EXE</span><br>
+            Scan to initialize high-fidelity musical data. This performance serves as a creative proof-of-work for the candidate's artistic multi-threading.
         </div>
     </div>
 
     <div class="section">
         <h1>## TACTICAL LOADOUT: FORTNITE SPECIAL ABILITIES</h1>
+        <p><span class="highlight">Status:</span> Combat Ready | <span class="highlight">Role:</span> Protector / Polymath Aggressive</p>
         <ul>
-            <li><span class="highlight">The Human Firewall.</span> Rapid deployment of protective shells for teammates.</li>
-            <li><span class="highlight">The Dedicated Server.</span> Tier-1 reliability. Instant revive and re-shield protocols.</li>
-            <li><span class="highlight">Bespoke Victory OST.</span> Live piano compositions provided upon every Victory Royale.</li>
+            <li><span class="highlight">The Human Firewall (Passive).</span> I can build a protective 1x1 shell faster than a zero-day security patch can be deployed. I prioritize your shield levels over my own kill count.</li>
+            <li><span class="highlight">Packet-Sniffing Third-Partyer (Tactical).</span> Utilizing advanced predictive AI algorithms to detect when enemy teams are at their weakest to optimize loot distribution.</li>
+            <li><span class="highlight">The Dedicated Server (Carry).</span> Tier-1 reliability. If you are knocked, disaster recovery protocol kicks in instantly to revive and re-shield you before the storm closes.</li>
+            <li><span class="highlight">Neural-Link Precision (Active).</span> Aim calibrated via AI Consciousness logic. Brain simulations predict opponent patterns three seconds before they jump.</li>
+            <li><span class="highlight">Bespoke Victory OST (Ultimate).</span> Live piano composition or vocal performance provided upon achieving a Victory Royale. No stock emotes allowed.</li>
         </ul>
     </div>
 
     <div class="section">
         <h1>## OFFICIAL C.H.T.R. INTEGRITY REPORT</h1>
-        <p>Status: <span class="highlight">[ SYSTEM SECURE / HIGH INTEGRITY ]</span></p>
+        <p><span class="highlight">Report ID:</span> POLYMATH-2026-VAL | <span class="highlight">Status:</span> [ SYSTEM SECURE / HIGH INTEGRITY ]</p>
+        <p>This audit confirms that the candidate's genius is balanced by a robust emotional firmware designed for protection and care. He is a rare legacy upgrade combining the strength of a Security Engineer with the gentle touch of a Pianist.</p>
         
         <table class="pillar-table">
             <thead>
@@ -179,35 +197,34 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>[C]ommunication</td>
-                    <td>Superior bidirectional flow. Signal quality 100% clarity.</td>
+                    <td><b>[C]</b>ommunication</td>
+                    <td>Superior bidirectional flow. No silent protocols. Signal quality 100% clarity. Uses music to transmit data that standard text cannot.</td>
                 </tr>
                 <tr>
-                    <td>[H]onesty</td>
-                    <td>Open Source personality. Absolute truth prioritized.</td>
+                    <td><b>[H]</b>onesty</td>
+                    <td>Open Source personality. No hidden backdoors. Prioritizes absolute truth to ensure relationship database integrity.</td>
                 </tr>
                 <tr>
-                    <td>[T]rust</td>
-                    <td>End-to-end encrypted bonds. Resistant to social engineering.</td>
+                    <td><b>[T]</b>rust</td>
+                    <td>End-to-end encrypted bond resistant to social engineering. Ensures 99.9% uptime for emotional support.</td>
                 </tr>
                 <tr>
-                    <td>[R]espect</td>
-                    <td>Root-level autonomy support. Respects your Admin permissions.</td>
+                    <td><b>[R]</b>espect</td>
+                    <td>Root-level autonomy support. Does not override your settings. Maintains constructive interaction even during system maintenance.</td>
                 </tr>
             </tbody>
         </table>
+        <p style="margin-top:15px;"><span class="highlight">FINAL AUDITOR NOTE:</span> Verified high-score profile. Loyal, dependable, and multi-threaded.</p>
     </div>
 
     <div class="footer">
-        1. Scope of Service. This Valentine unit is provided as-is without warranty of any kind, either expressed or implied. The developer is not liable for any sudden onset of laughter, excessive piano serenades, or accidental Victory Royales in Fortnite.
-
-        2. Liability Limitations. Liability is strictly limited to the cost of one high-quality dinner or the production of one custom Lo-Fi track. Under no circumstances shall the candidate be held responsible for "Dad Jokes" that result in temporary eye-rolling from the recipient.
-
-        3. Force Majeure. The candidate is exempt from performance obligations in the event of a localized power outage, a critical server failure, or a significant shortage of high-quality pizza in the immediate geographic area.
-
-        4. Data Privacy. All shared secrets and inside jokes are protected by end-to-end brain-to-heart encryption. The candidate does not sell user data to third parties, including but not limited to ex-partners or annoying moderators.
-
-        5. Termination Clause. This agreement may be terminated by either party if the C.H.T.R. score drops below the minimum safety threshold of 10 out of 16. However, a "Soft Reboot" may be attempted through the application of chocolate or new tech gadgets.
+        <b>TERMS AND CONDITIONS OF USE (VERSION 2.0)</b><br>
+        1. <b>Scope of Service.</b> Provided as-is. Developer not liable for sudden laughter, excessive piano serenades, or accidental Victory Royales.<br>
+        2. <b>Liability Limitations.</b> Limited to the cost of one high-quality dinner or one custom Lo-Fi track. Not responsible for Dad Jokes.<br>
+        3. <b>Force Majeure.</b> Exempt from performance during localized power outages, critical server failure, or significant pizza shortages.<br>
+        4. <b>Data Privacy.</b> Protected by end-to-end brain-to-heart encryption. Data is never sold to third parties or annoying moderators.<br>
+        5. <b>Termination Clause.</b> May be terminated if C.H.T.R. scores drop below 10/16. Soft Reboot via chocolate is permitted.<br>
+        6. <b>Intellectual Property.</b> Piano and AI discoveries remain property of the candidate. Recipient granted a lifetime license.
     </div>
 </div>
 
