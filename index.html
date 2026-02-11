@@ -194,14 +194,33 @@
         const gatekeeper = document.getElementById('gatekeeper');
         const mainContent = document.getElementById('main-content');
 
+        // --- AUTOMATED PROGRESS LOGIC ---
+        const now = new Date();
+        // Set the "Update Date" to February 13th, 2026
+        const updateDate = new Date('2026-02-13T00:00:00');
+
+        let currentProgress = 75;
+
+        // If it's Feb 13th or later, the "Patch" is 95% complete
+        if (now >= updateDate) {
+            currentProgress = 95;
+        }
+
+        // Set the initial visual state based on the date
+        progressBar.style.width = currentProgress + '%';
+        loadingText.innerText = `STATUS: ${currentProgress}% Compiled... Waiting for Security Key`;
+
+        // --- ACCESS CODE LOGIC ---
         accessInput.addEventListener('input', function() {
             if (this.value === '1111') {
                 this.disabled = true;
                 this.style.borderColor = 'var(--neon-pink)';
                 this.style.color = 'var(--neon-pink)';
+            
+                // Final compilation to 100%
                 loadingText.innerText = "AUTHENTICATED. DEPLOYING 100% COMPILE...";
                 progressBar.style.width = '100%';
-                
+            
                 setTimeout(() => {
                     gatekeeper.style.opacity = '0';
                     gatekeeper.style.transition = 'opacity 1s ease-out';
