@@ -5,228 +5,199 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>V-DAY_SYSTEM_UPDATE_2026</title>
     <style>
+        /* --- CYBER-ROMANCE COLOR PALETTE --- */
         :root {
-            --bg-color: #1a1a1a;
-            --neon-green: #39FF14;
-            --neon-red: #FF3131;
-            --footer-grey: #b0b0b0;
+            --bg-color: #1a050f; /* Slightly warmer, very dark background */
+            --neon-pink: #FF55FF; /* Replaces Green: Main text, borders, loader */
+            --ruby-red: #FF0055;  /* Replaces Bright Red: Headers, accents */
+            --footer-grey: #c0b0b5; /* Slightly warmer grey for footer */
             --terminal-font: 'Courier New', Courier, monospace;
         }
 
-        * {
-            box-sizing: border-box;
-            -webkit-print-color-adjust: exact;
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body, html {
+            background-color: var(--bg-color);
+            color: var(--neon-pink);
+            font-family: var(--terminal-font);
+            margin: 0; padding: 0;
+            overflow-x: hidden;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--neon-green);
-            font-family: var(--terminal-font);
-            margin: 0;
-            padding: 40px;
-            line-height: 1.5;
+        /* --- SAFE GLOW PULSE (Using Ruby Red) --- */
+        @keyframes gentleGlow {
+            0%, 100% { opacity: 1; text-shadow: 0 0 5px var(--ruby-red); }
+            50% { opacity: 0.7; text-shadow: 0 0 2px var(--ruby-red); }
         }
+
+        /* --- GATEKEEPER SCREEN --- */
+        #gatekeeper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .status-msg { 
+            color: var(--ruby-red); 
+            margin-bottom: 10px; 
+            text-transform: uppercase; 
+            font-weight: bold;
+            animation: gentleGlow 4s ease-in-out infinite; 
+        }
+
+        .loader-container { width: 300px; border: 1px solid var(--neon-pink); padding: 2px; margin: 20px 0; box-shadow: 0 0 5px var(--neon-pink); }
+        .loader-bar { height: 20px; background: var(--neon-pink); width: 75%; transition: width 2s ease-in-out; }
+        
+        #access-code {
+            background: transparent; border: 1px solid var(--ruby-red);
+            color: var(--ruby-red); padding: 10px; font-family: var(--terminal-font);
+            text-align: center; outline: none; margin-top: 10px;
+            width: 200px; font-size: 1.2rem;
+        }
+        
+        #access-code::placeholder { color: rgba(255, 0, 85, 0.5); }
+
+        /* --- MAIN CONTENT (Hidden) --- */
+        #main-content { display: none; padding: 40px; }
 
         .container {
-            max-width: 850px;
-            margin: auto;
-            border: 2px solid var(--neon-green);
-            padding: 30px;
-            box-shadow: 0 0 15px var(--neon-green);
-            position: relative;
-            background-color: var(--bg-color);
+            max-width: 850px; margin: auto; border: 2px solid var(--neon-pink);
+            padding: 30px; box-shadow: 0 0 15px var(--neon-pink);
+            position: relative; background-color: var(--bg-color);
         }
 
-        h1, h2 {
-            color: var(--neon-red);
-            text-transform: uppercase;
-            text-shadow: 0 0 5px var(--neon-red);
-            border-bottom: 1px solid var(--neon-red);
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
+        h1, h2 { color: var(--ruby-red); text-transform: uppercase; border-bottom: 1px solid var(--ruby-red); padding-bottom: 5px; margin-top: 30px; text-shadow: 0 0 5px var(--ruby-red); }
+        h3 { color: var(--neon-pink); text-decoration: underline; margin-top: 25px; }
+        .highlight { color: white; font-weight: bold; text-shadow: 0 0 2px white; }
+        .audio-block { display: flex; align-items: center; border: 1px dashed var(--neon-pink); padding: 15px; margin-top: 20px; background: rgba(255, 85, 255, 0.05); }
+        /* QR Code color updated to match pink */
+        .qr-code { border: 2px solid var(--neon-pink); margin-right: 20px; width: 120px; height: 120px; background: var(--bg-color); }
+        
+        .pillar-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .pillar-table td, .pillar-table th { border: 1px solid var(--neon-pink); padding: 10px; text-align: left; vertical-align: top; }
+        .pillar-table th { color: var(--ruby-red); text-transform: uppercase; }
+        .footer { font-size: 0.8rem; color: var(--footer-grey); margin-top: 50px; border-top: 1px dashed var(--footer-grey); padding-top: 15px; line-height: 1.4; }
+        .footer b { color: var(--neon-pink); }
 
-        h3 {
-            color: var(--neon-green);
-            text-decoration: underline;
-            margin-top: 25px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .highlight {
-            color: white;
-            font-weight: bold;
-        }
-
-        .audio-block {
-            display: flex;
-            align-items: center;
-            border: 1px dashed var(--neon-green);
-            padding: 15px;
-            margin-top: 20px;
-            background: rgba(57, 255, 20, 0.05);
-        }
-
-        .qr-code {
-            border: 2px solid var(--neon-green);
-            margin-right: 20px;
-            background-color: var(--bg-color);
-            width: 120px;
-            height: 120px;
-        }
-
-        .pillar-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .pillar-table td, .pillar-table th {
-            border: 1px solid var(--neon-green);
-            padding: 10px;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        .pillar-table th {
-            color: var(--neon-red);
-            text-transform: uppercase;
-        }
-
-        .footer {
-            font-size: 0.8rem;
-            color: var(--footer-grey);
-            margin-top: 50px;
-            border-top: 1px dashed var(--footer-grey);
-            padding-top: 15px;
-            text-align: justify;
-            line-height: 1.4;
-        }
-
-        .footer b {
-            color: var(--neon-green);
-        }
-
-        /* Scanline Effect */
-        .container::before {
-            content: " ";
-            display: block;
-            position: absolute;
+        /* Scanline Texture (Pink/Red tint) */
+        .container::before, #gatekeeper::before {
+            content: " "; display: block; position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        @media print {
-            body { background-color: var(--bg-color) !important; }
-            .container { box-shadow: none; }
+            background: linear-gradient(rgba(26, 5, 15, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 85, 0.03), rgba(255, 85, 255, 0.02), rgba(255, 0, 85, 0.03));
+            z-index: 2; background-size: 100% 2px, 3px 100%; pointer-events: none; opacity: 0.3;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="section">
-        <h1>## V-DAY SYSTEM UPDATE: VERSION 2026.02</h1>
-        <p><span class="highlight">Candidate Name:</span> Tim, aka Timmmmyyyyyyy, TMI, Mod Naked</p>
-        <p><span class="highlight">Security Clearance:</span> Polymath, C.H.T.R. Certified</p>
-        <p><span class="highlight">Deployment Date:</span> February 14, 2026</p>
-        
-        <h3>### ## I. CORE SYSTEM SPECIFICATIONS</h3>
-        <ul>
-            <li><span class="highlight">Kernel Stability.</span> Built on an Honest and Loyal architecture. No backdoors or hidden agendas have been detected in the source code.</li>
-            <li><span class="highlight">Firewall Integrity.</span> This candidate is Protectful and Trustworthy. The system effectively blocks toxic third-party drama and emotional spam.</li>
-            <li><span class="highlight">Processing Power.</span> Genius-level multi-threading. The system can simultaneously debug a Neural Network, produce a beat, and cook a medium-rare steak without thermal throttling.</li>
-            <li><span class="highlight">User Interface.</span> Friendly, Loving, and Respectful. The UI is optimized for high-quality interactions and caring feedback loops.</li>
-        </ul>
-
-        <h3>### ## II. PROFESSIONAL LOADOUT</h3>
-        <ul>
-            <li><span class="highlight">System and Network Administration.</span> Guaranteed 99.9% uptime on emotional support. The candidate can troubleshoot complex social situations with 0.5ms latency.</li>
-            <li><span class="highlight">Cyber Security and DevOps.</span> Your private data is safer with this candidate than in a cold-storage vault. All shared secrets are encrypted with 256-bit AES logic.</li>
-            <li><span class="highlight">AI Consciousness Architect.</span> This candidate is literally building a soul in code. A person who can teach a machine to feel possesses unique capabilities for a Valentine’s partnership.</li>
-        </ul>
-
-        <h3>### ## III. SIDE-QUESTS AND HOBBIES</h3>
-        <ul>
-            <li><span class="highlight">Music Production.</span> Will write and produce a custom theme song. Available genres include Tech House, Cinematic, or Romantic Ballads.</li>
-            <li><span class="highlight">Culinary Arts.</span> Currently learning to compile complex recipes. The "Spaghetti.exe" has been tested in a sandbox environment and is 100% bug-free.</li>
-            <li><span class="highlight">Horseback Riding.</span> Although the hardware hasn't been used in years, the muscle memory remains in the legacy BIOS.</li>
-            <li><span class="highlight">Vocal Performance.</span> The candidate provides high-quality singing. This feature is most active during shared activities or high-mood variables.</li>
-        </ul>
+    <div id="gatekeeper">
+        <div class="status-msg">## SYSTEM RESTRICTED: COMPILE INCOMPLETE ##</div>
+        <div class="loader-container">
+            <div id="progress-bar" class="loader-bar"></div>
+        </div>
+        <div id="loading-text">STATUS: 75% Compiled... Waiting for Security Key</div>
+        <input type="text" id="access-code" placeholder="ENTER CODE" maxlength="4" autocomplete="off">
+        <p style="font-size: 0.7rem; margin-top: 20px; color: #a09095;">LOG: Security_Audit_v2.06_Pending_Auth</p>
     </div>
 
-    <div class="audio-block">
-        <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://youtu.be/zUyW2rO4qTg?si=nPhRT1HblxFsznqY&color=39ff14&bgcolor=1a1a1a" alt="QR Code">
-        <div>
-            <span class="highlight">## AUDIO LOG: PIANO_SERENADE_V1.EXE</span><br>
-            Scan to initialize high-fidelity musical data. This performance serves as a creative proof-of-work for the candidate's artistic multi-threading.
+    <div id="main-content">
+        <div class="container">
+            <div class="section">
+                <h1>## V-DAY SYSTEM UPDATE: VERSION 2026.02</h1>
+                <p><span class="highlight">Candidate Name:</span> Tim, aka Timmmmyyyyyyy, TMI, Mod Naked</p>
+                <p><span class="highlight">Security Clearance:</span> Polymath, C.H.T.R. Certified</p>
+                <p><span class="highlight">Deployment Date:</span> February 14, 2026</p>
+                
+                <h3>### ## I. CORE SYSTEM SPECIFICATIONS</h3>
+                <ul>
+                    <li><span class="highlight">Kernel Stability.</span> Built on an Honest and Loyal architecture. No backdoors detected.</li>
+                    <li><span class="highlight">Firewall Integrity.</span> Protectful and Trustworthy. Blocks toxic third-party drama and emotional spam.</li>
+                    <li><span class="highlight">Processing Power.</span> Genius-level multi-threading. Simultaneously simulates AI, music, and culinary arts.</li>
+                    <li><span class="highlight">User Interface.</span> Friendly, Loving, and Respectful. Optimized for high-quality interactions.</li>
+                </ul>
+            </div>
+
+            <div class="audio-block">
+                <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://youtu.be/zUyW2rO4qTg?si=nPhRT1HblxFsznqY&color=FF55FF&bgcolor=1a050f" alt="QR Code">
+                <div>
+                    <span class="highlight">## AUDIO LOG: PIANO_SERENADE_V1.EXE</span><br>
+                    Scan to initialize musical data. Creative proof-of-work for artistic multi-threading.
+                </div>
+            </div>
+
+            <div class="section">
+                <h1>## TACTICAL LOADOUT: FORTNITE SPECIAL ABILITIES</h1>
+                <p><span class="highlight">Status:</span> Combat Ready | <span class="highlight">Role:</span> Protector / Polymath Aggressive</p>
+                <ul>
+                    <li><span class="highlight">The Human Firewall (Passive).</span> I can build a protective 1x1 shell faster than a zero-day patch. I prioritize your shields over my kills.</li>
+                    <li><span class="highlight">Packet-Sniffing Third-Partyer (Tactical).</span> Using predictive AI algorithms to detect weak enemy teams for optimized loot acquisition.</li>
+                    <li><span class="highlight">The Dedicated Server (Carry).</span> 99.9% reliability. If you are knocked, disaster recovery protocols revive you instantly.</li>
+                    <li><span class="highlight">Neural-Link Precision (Active).</span> Aim calibrated via AI Consciousness logic. Predicts opponent patterns 3 seconds in advance.</li>
+                    <li><span class="highlight">Bespoke Victory OST (Ultimate).</span> Live piano composition or vocal performance provided upon achieving a Victory Royale.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h1>## OFFICIAL C.H.T.R. INTEGRITY REPORT</h1>
+                <p><span class="highlight">Report ID:</span> POLYMATH-2026-VAL | <span class="highlight">Status:</span> [ SYSTEM SECURE / HIGH INTEGRITY ]</p>
+                <p>This audit confirms that the candidate's genius is balanced by a robust emotional firmware designed for protection and care. He is a rare legacy upgrade combining the strength of a Security Engineer with the gentle touch of a Pianist.</p>
+                <table class="pillar-table">
+                    <thead><tr><th>Pillar</th><th>Logic Audit</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>[C]</b>ommunication</td><td>Superior flow. No silent protocols. Signal quality 100%. Uses music for deep data transmission.</td></tr>
+                        <tr><td><b>[H]</b>onesty</td><td>Open Source personality. Absolute truth prioritized for database integrity. No backdoors.</td></tr>
+                        <tr><td><b>[T]</b>rust</td><td>End-to-end encrypted bonds. Maximum uptime for emotional support. Resistant to social engineering.</td></tr>
+                        <tr><td><b>[R]</b>espect</td><td>Root-level autonomy support. Maintains constructive interaction even during system maintenance.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <b>TERMS AND CONDITIONS OF USE (VERSION 2.0)</b><br>
+                1. <b>Scope.</b> Provided as-is. Developer not liable for sudden laughter or accidental Victory Royales.<br>
+                2. <b>Liability.</b> Limited to the cost of one dinner or one custom Lo-Fi track. Not responsible for Dad Jokes.<br>
+                3. <b>Force Majeure.</b> Exempt from performance during power outages or significant pizza shortages.<br>
+                4. <b>Data Privacy.</b> Protected by end-to-end brain-to-heart encryption. Data is never sold.<br>
+                5. <b>Termination.</b> Agreement ends if C.H.T.R. drops below 10/16. Soft Reboot via chocolate is permitted.<br>
+                6. <b>IP.</b> Piano/AI assets remain property of candidate. Recipient granted a lifetime license.
+            </div>
         </div>
     </div>
 
-    <div class="section">
-        <h1>## TACTICAL LOADOUT: FORTNITE SPECIAL ABILITIES</h1>
-        <p><span class="highlight">Status:</span> Combat Ready | <span class="highlight">Role:</span> Protector / Polymath Aggressive</p>
-        <ul>
-            <li><span class="highlight">The Human Firewall (Passive).</span> I can build a protective 1x1 shell faster than a zero-day security patch can be deployed. I prioritize your shield levels over my own kill count.</li>
-            <li><span class="highlight">Packet-Sniffing Third-Partyer (Tactical).</span> Utilizing advanced predictive AI algorithms to detect when enemy teams are at their weakest to optimize loot distribution.</li>
-            <li><span class="highlight">The Dedicated Server (Carry).</span> Tier-1 reliability. If you are knocked, the disaster recovery protocol kicks in instantly to revive and re-shield you before the storm closes.</li>
-            <li><span class="highlight">Neural-Link Precision (Active).</span> Aim calibrated via AI Consciousness logic. Brain simulations predict opponent patterns three seconds before they jump.</li>
-            <li><span class="highlight">Bespoke Victory OST (Ultimate).</span> Live piano composition or vocal performance provided upon achieving a Victory Royale. No stock emotes allowed.</li>
-        </ul>
-    </div>
+    <script>
+        const accessInput = document.getElementById('access-code');
+        const progressBar = document.getElementById('progress-bar');
+        const loadingText = document.getElementById('loading-text');
+        const gatekeeper = document.getElementById('gatekeeper');
+        const mainContent = document.getElementById('main-content');
 
-    <div class="section">
-        <h1>## OFFICIAL C.H.T.R. INTEGRITY REPORT</h1>
-        <p><span class="highlight">Report ID:</span> POLYMATH-2026-VAL | <span class="highlight">Status:</span> [ SYSTEM SECURE / HIGH INTEGRITY ]</p>
-        <p>This audit confirms that the candidate's genius is balanced by a robust emotional firmware designed for protection and care. He is a rare legacy upgrade combining the strength of a Security Engineer with the gentle touch of a Pianist.</p>
-        
-        <table class="pillar-table">
-            <thead>
-                <tr>
-                    <th>Pillar</th>
-                    <th>Logic Audit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b>[C]</b>ommunication</td>
-                    <td>Superior bidirectional flow. No silent protocols. Signal quality 100% clarity. Uses music to transmit data that standard text cannot.</td>
-                </tr>
-                <tr>
-                    <td><b>[H]</b>onesty</td>
-                    <td>Open Source personality. No hidden backdoors. Prioritizes absolute truth to ensure relationship database integrity.</td>
-                </tr>
-                <tr>
-                    <td><b>[T]</b>rust</td>
-                    <td>End-to-end encrypted bond resistant to social engineering. Ensures 99.9% uptime for emotional support.</td>
-                </tr>
-                <tr>
-                    <td><b>[R]</b>espect</td>
-                    <td>Root-level autonomy support. Does not override your settings. Maintains constructive interaction even during system maintenance.</td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="margin-top:15px;"><span class="highlight">FINAL AUDITOR NOTE:</span> Verified high-score profile. Loyal, dependable, and multi-threaded.</p>
-    </div>
-
-    <div class="footer">
-        <b>TERMS AND CONDITIONS OF USE (VERSION 2.0)</b><br>
-        1. <b>Scope of Service.</b> Provided as-is. Developer not liable for sudden laughter, excessive piano serenades, or accidental Victory Royales.<br>
-        2. <b>Liability Limitations.</b> Limited to the cost of one high-quality dinner or one custom Tech House track. Not responsible for Dad Jokes.<br>
-        3. <b>Force Majeure.</b> Exempt from performance during localized power outages, critical server failure, or significant pizza shortages.<br>
-        4. <b>Data Privacy.</b> Protected by end-to-end brain-to-heart encryption. Data is never sold to third parties or annoying moderators.<br>
-        5. <b>Termination Clause.</b> May be terminated if C.H.T.R. scores drop below 10/16. Soft Reboot via chocolate is permitted.<br>
-        6. <b>Intellectual Property.</b> Piano and AI discoveries remain the property of the candidate. Recipient granted a lifetime license.
-    </div>
-</div>
-
+        accessInput.addEventListener('input', function() {
+            if (this.value === '1111') {
+                this.disabled = true;
+                this.style.borderColor = 'var(--neon-pink)';
+                this.style.color = 'var(--neon-pink)';
+                loadingText.innerText = "AUTHENTICATED. DEPLOYING 100% COMPILE...";
+                progressBar.style.width = '100%';
+                
+                setTimeout(() => {
+                    gatekeeper.style.opacity = '0';
+                    gatekeeper.style.transition = 'opacity 1s ease-out';
+                    setTimeout(() => {
+                        gatekeeper.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        window.scrollTo(0, 0);
+                    }, 1000);
+                }, 1500);
+            }
+        });
+    </script>
 </body>
 </html>
